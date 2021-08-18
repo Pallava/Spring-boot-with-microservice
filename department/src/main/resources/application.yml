@@ -1,0 +1,35 @@
+
+server:
+  port: 9004
+
+  
+  
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: password
+    url: jdbc:h2:file:C:/data/department
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+  application:
+    name: DEPARTMENT-SERVICE
+  h2:
+    console:
+      enabled: true  
+  
+  zipkin:
+    base-url: http://localhost:9411/
+
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+    
+      
+      
