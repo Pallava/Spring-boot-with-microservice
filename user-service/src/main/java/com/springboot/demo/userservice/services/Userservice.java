@@ -21,7 +21,7 @@ public class Userservice {
 	private RestTemplate resttemplate;
 
 	public Optional<List<User>> saveUser(List<User> user) {
-		logger.info("saveUser in Userservice");
+		logger.info("saveUser in Userservices");
 		user.stream().forEach(d->{userRepository.save(d);});
 		 return Optional.of(user);
 		
