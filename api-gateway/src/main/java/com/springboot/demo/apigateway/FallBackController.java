@@ -9,7 +9,7 @@ public class FallBackController {
 	
 	@GetMapping("/userServiceFallback")
 	public String userServiceFallbackMethod() {
-		return "User service is taking time to respond   ";
+		return "User service is taking time to responsd   ";
 	}
 	
 	@GetMapping("/departmentServiceFallback")
