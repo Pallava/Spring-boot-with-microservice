@@ -1,18 +1,20 @@
-logging:
-  level:
-    org:
-      springframework: DEBUG
+logging:  level:    '[com.springboot.demo.apigateway]': DEBUG
+    
+      
+
 server:
   port: 9191
   
   
   
-spring:
+spring:  zipkin:    base-url: http://localhost:9411/
   main:    web-application-type: reactive
   application:
     name: API-GATEWAY
   cloud:
     gateway:
+      discovery:        locator:          enabled: true
+          lower-case-service-id: true
       routes:
         - id: USER-SERVICE
           uri: lb://USER-SERVICE
@@ -31,8 +33,8 @@ spring:
          #   - name: CircuitBreaker
           #    args:
            #     name: DEPARTMENT-SERVICE
-             #   fallbackuri: forward:/departmentServiceFallback
-
+             #   fallbackuri: forward:/departmentServiceFallback  sleuth:    reactor:      instrumentation-type: decorate-on-each 
+     
     
 
 management:
@@ -41,6 +43,5 @@ management:
       exposure:
         include: hystrix.stream
   
-
       
       

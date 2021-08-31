@@ -1,0 +1,9 @@
+com\springboot\demo\userservice\dto\Department.class
+com\springboot\demo\userservice\feignclients\DepartmentFeignClient.class
+com\springboot\demo\userservice\dto\RestResponseSO.class
+com\springboot\demo\userservice\services\Userservice.class
+com\springboot\demo\userservice\entity\User.class
+com\springboot\demo\userservice\repository\UserRepository.class
+com\springboot\demo\userservice\controller\UserController.class
+com\springboot\demo\userservice\services\CommonService.class
+com\springboot\demo\userservice\UserServiceApplication.class

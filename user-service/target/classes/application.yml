@@ -2,8 +2,10 @@
 server:
   port: 9003
   
-  
-  
+department:
+ service:
+  url: DEPARTMENT-SERVICE
+
 spring:
   datasource:
     driverClassName: org.h2.Driver
@@ -16,10 +18,21 @@ spring:
       ddl-auto: create
   application:
     name: USER-SERVICE
-  zipkin:
-    base-url: http://localhost:9411/
+
      
-  
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      departmentService:
+        slidingWindowSize: 10
+        failure-rate-threshold: 50 #if failure rate >50 % make switch as OPEN
+        wait-duration-in-open-state: 30000 #in milliseconds
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 5
+        allow-health-indicator-to-fail: true # actuator 
+        register-health-indicator: true #actuat
+        
 
     
 
@@ -28,8 +41,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
-        
+        include: health,info,refresh
+  endpoint:
+    health:
+      show-details: always  
+  health:
+    circuitbreakers:
+      enabled: true
+ 
+#half-open =UNKNOWN
+#open =UP
+#closed =DOWN     
     
       
       
